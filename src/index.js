@@ -1,12 +1,14 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import App from "./App";
+const App = () => {
+  return (
+    <div className="App">
+      <h1>Hello</h1>
+      <input placeholder="Name" />
+    </div>
+  );
+};
 
 const rootElement = document.getElementById("root");
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  rootElement
-);
+ReactDOM.render(<App />, rootElement);
