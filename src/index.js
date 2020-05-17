@@ -3,33 +3,27 @@ import ReactDOM from "react-dom";
 
 import "./useInput";
 
-const App = () => {
-  const sayHello = () => {
-    console.log("hello");
+const useTitle = initialTitle => {
+  const [title, setTitle] = useState(initialTitle);
+  const updateTitle = () => {
+    const htmlTitle = document.querySelector("title");
+    htmlTitle.innerText = title;
   };
+  useEffect(updateTitle, [title]);
+  return {
+    title: title,
+    setTitle: setTitle
+  };
+};
 
-  const [bNumber, bSetNumber] = useState(0);
-  const [aNumber, aSetNumber] = useState(0);
+const App = () => {
+  const titleUpdater = useTitle("Loading...");
 
-  useEffect(sayHello, [bNumber, aNumber]);
+  setTimeout(() => titleUpdater.setTitle("home"), 5000);
 
   return (
     <div className="App">
-      <div> HI </div>
-      <button
-        onClick={() => {
-          bSetNumber(bNumber + 1);
-        }}
-      >
-        {bNumber}
-      </button>
-      <button
-        onClick={() => {
-          aSetNumber(aNumber + 1);
-        }}
-      >
-        {aNumber}
-      </button>
+      <h1>Hello</h1>
     </div>
   );
 };
