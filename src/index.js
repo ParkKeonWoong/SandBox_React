@@ -1,31 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import ReactDOM from "react-dom";
 
-const useBeforeLeave = onBefore => {
-  if (typeof onBefore !== "function") {
-    return;
-  }
-  const handle = event => {
-    console.log(event);
-    const { clientY } = event;
-    if (clientY >= 0) console.log("plz dont go");
-    onBefore();
-  };
-
-  useEffect(() => {
-    document.addEventListener("mouseleave", handle);
-    return () => document.removeEventListener("mouseleave", handle);
-  }, []);
-};
-
 const App = () => {
-  const begForLife = () => {
-    console.log("plz dont leave");
-  };
-  useBeforeLeave(begForLife);
   return (
     <div className="App">
       <h1>Hello</h1>
+      <p>lorem ipsum llalal </p>
     </div>
   );
 };
